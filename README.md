@@ -1,150 +1,120 @@
-#  Prosthetic Robot Hand (Computer Vision Controlled)
-
-##  Overview
-
-This project demonstrates a **robotic prosthetic hand** controlled using **computer vision**.
-A webcam tracks the user’s hand in real-time and sends commands to an Arduino to control servo motors.
 
 ---
 
-##  Objective
+````md
+# Prosthetic Robot Hand (Computer Vision Controlled)
 
-Build a **real-time human-robot interaction system** where hand gestures control a robotic hand.
-
----
-
-##  System Architecture
-
-```text
-User Hand → Camera → Python (Computer Vision) → Arduino → Servo Motors → Prosthetic Hand
-```
+## Overview
+This project is a computer vision-based system that detects hand gestures using a webcam and controls a 3D-printed prosthetic hand through an Arduino microcontroller and servo motors. The system enables real-time human-robot interaction by translating hand movements into mechanical actions.
 
 ---
 
-##  System Pipeline
-
-![System Pipeline](https://upload.wikimedia.org/wikipedia/commons/3/3f/Computer_vision_pipeline.png)
-
----
-
-##  Hand Tracking (Computer Vision)
-
-![Hand Tracking](https://upload.wikimedia.org/wikipedia/commons/1/1f/Hand_tracking_example.jpg)
+## Objective
+The objective of this project is to develop a simple and functional human-robot interaction system where hand gestures are used to control a robotic prosthetic hand in real time.
 
 ---
 
-##  Prosthetic Hand Example
+## System Architecture
+The system follows this pipeline:
 
-![Prosthetic Hand](https://upload.wikimedia.org/wikipedia/commons/5/5e/Prosthetic_hand.jpg)
-
----
-
-##  Arduino + Servo Motors
-
-![Arduino Setup](https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg)
+User Hand → Webcam → Python (Computer Vision) → Serial Communication → Arduino → Servo Motors → Prosthetic Hand
 
 ---
 
-##  Components
+## Components
 
-###  Hardware
+### Hardware
+- Arduino Uno
+- Servo motors
+- 3D-printed prosthetic hand
+- Jumper wires
+- Power supply
 
-* Arduino Uno
-* Servo Motors
-* 3D Printed Prosthetic Hand
-* Jumper Wires
-* Power Supply
-
-###  Software
-
-* Python
-* OpenCV
-* cvzone
-* MediaPipe
-
----
-
-##  Implementation Steps
-
-###  Hardware Testing
-
-* Test servo motors using Arduino
-* Ensure all fingers move correctly
+### Software
+- Python
+- OpenCV
+- cvzone
+- MediaPipe
+- Arduino IDE
 
 ---
 
-###  Serial Communication
+## Implementation Steps
 
-* Connect Python with Arduino
-* Send simple commands (0 / 1)
+### 1. Hardware Setup
+The servo motors are connected to the Arduino board and attached to the fingers of the prosthetic hand. Each servo is responsible for controlling one finger movement.
 
----
+### 2. Arduino Control
+The Arduino receives serial data from the Python application and maps the received values to servo motor positions.
 
-###  Computer Vision
+### 3. Computer Vision
+A webcam captures the user's hand in real time. The system detects hand landmarks and determines which fingers are open or closed.
 
-* Detect hand using webcam
-* Extract finger positions
-* Send commands to Arduino
-
----
-
-##  Control Logic
-
-| Gesture       | Action      |
-| ------------- | ----------- |
-| Hand Open ✋   | Hand Opens  |
-| Hand Closed ✊ | Hand Closes |
+### 4. Communication
+Python sends binary values representing finger states to the Arduino using serial communication.
 
 ---
 
-##  How It Works
+## Control Logic
+The system uses a simple mapping between detected gestures and hand movement:
 
-1. Camera captures hand
-2. Computer vision detects fingers
-3. Data sent to Arduino
-4. Arduino controls motors
-5. Hand moves accordingly
+- Open hand gesture: prosthetic hand opens
+- Closed hand gesture: prosthetic hand closes
 
----
-
-##  Challenges
-
-* Lighting conditions
-* Detection accuracy
-* Servo calibration
+More advanced versions can map individual finger movements.
 
 ---
 
-##  Future Improvements
-
-* Control each finger separately
-* Add gesture recognition
-* Wireless control
+## How It Works
+1. The camera captures live video of the user’s hand
+2. The computer vision model detects hand landmarks
+3. Finger positions are analyzed
+4. Data is converted into a binary format
+5. Data is sent to Arduino via serial communication
+6. Arduino controls servo motors based on received data
 
 ---
 
-##  Requirements
+## Challenges
+- Variations in lighting conditions
+- Accuracy of hand detection
+- Servo calibration and synchronization
+- Real-time communication stability
+
+---
+
+## Future Improvements
+- Independent control of each finger
+- Improved gesture recognition accuracy
+- Wireless communication (Bluetooth or WiFi)
+- Integration with machine learning models for advanced gestures
+
+---
+
+## Requirements
+Install the required Python libraries:
 
 ```bash
 pip install opencv-python cvzone mediapipe pyserial
-```
+````
 
 ---
 
-##  Run
+## Running the Project
+
+Run the Python application:
 
 ```bash
 python main.py
 ```
 
----
-
-##  Conclusion
-
-A simple and practical project demonstrating **real-time human-robot interaction using computer vision**.
+Ensure the Arduino is connected and the correct COM port is selected.
 
 ---
 
-## License
+## Conclusion
 
-Educational use only.
+This project demonstrates a basic implementation of a human-robot interaction system using computer vision and embedded systems. It provides a foundation for more advanced prosthetic control systems and gesture-based robotic applications.
+
+```
+
